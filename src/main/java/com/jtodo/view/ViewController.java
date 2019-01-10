@@ -1,7 +1,6 @@
 package com.jtodo.view;
 
-import com.jtodo.toDoObjects.IToDoObject;
-
+import com.jtodo.toDoObjects.*;
 import java.util.Stack;
 
 public class ViewController implements IViewController {

@@ -1,8 +1,6 @@
 package com.jtodo.toDoObjects;
 
-import com.jtodo.status.IStatus;
-import com.jtodo.status.InProcess;
-import com.jtodo.status.Status;
+import com.jtodo.status.*;
 
 public class Deal implements IDeal {
     private String name;

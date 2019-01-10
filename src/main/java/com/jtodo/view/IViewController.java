@@ -1,6 +1,6 @@
 package com.jtodo.view;
 
-import com.jtodo.toDoObjects.IToDoObject;
+import com.jtodo.toDoObjects.*;
 
 public interface IViewController {
     void addToViewer(IToDoObject newObj);

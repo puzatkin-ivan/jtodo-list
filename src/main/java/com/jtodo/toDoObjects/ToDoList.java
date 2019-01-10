@@ -1,7 +1,6 @@
 package com.jtodo.toDoObjects;
 
-import com.jtodo.status.IStatus;
-
+import com.jtodo.status.*;
 import java.util.ArrayList;
 import java.util.List;
 

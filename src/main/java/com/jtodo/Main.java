@@ -1,10 +1,7 @@
-import com.jtodo.handlers.CommandHandler;
-import com.jtodo.handlers.ICommandHandler;
+import com.jtodo.handlers.*;
 import com.jtodo.toDoObjects.*;
-import com.jtodo.view.ViewController;
-import com.jtodo.workWithFiles.DataWorker;
-import com.jtodo.workWithFiles.IDataWorker;
-
+import com.jtodo.view.*;
+import com.jtodo.workWithFiles.*;
 import java.io.File;
 import java.util.*;
 
@@ -16,7 +13,6 @@ public class Main {
             list = worker.convertDataFromFiles(dir);
         } catch (Exception ex) {
         }
-
         return list;
     }
 
