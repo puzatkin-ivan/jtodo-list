@@ -1,4 +1,4 @@
-package toDoObjects;
+package com.jtodo.toDoObjects;
 
 import java.util.List;
 
