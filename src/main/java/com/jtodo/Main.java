@@ -1,5 +1,5 @@
 import com.jtodo.handlers.CommandHandler;
-import handlers.ICommandHandler;
+import com.jtodo.handlers.ICommandHandler;
 import com.jtodo.toDoObjects.*;
 import com.jtodo.view.ViewController;
 import com.jtodo.workWithFiles.DataWorker;
