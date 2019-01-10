@@ -1,4 +1,4 @@
-package command;
+package com.jtodo.command;
 
 public class CreateCommand {
 

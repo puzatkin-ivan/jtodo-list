@@ -1,8 +1,8 @@
-package workWithFiles;
+package com.jtodo.workWithFiles;
 
-import toDoObjects.IMainList;
-import toDoObjects.IToDoList;
-import toDoObjects.IToDoObject;
+import com.jtodo.toDoObjects.IMainList;
+import com.jtodo.toDoObjects.IToDoList;
+import com.jtodo.toDoObjects.IToDoObject;
 
 import java.io.File;
 import java.util.HashMap;

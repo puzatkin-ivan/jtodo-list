@@ -1,9 +1,9 @@
-import handlers.CommandHandler;
+import com.jtodo.handlers.CommandHandler;
 import handlers.ICommandHandler;
-import toDoObjects.*;
-import view.ViewController;
-import workWithFiles.DataWorker;
-import workWithFiles.IDataWorker;
+import com.jtodo.toDoObjects.*;
+import com.jtodo.view.ViewController;
+import com.jtodo.workWithFiles.DataWorker;
+import com.jtodo.workWithFiles.IDataWorker;
 
 import java.io.File;
 import java.util.*;
