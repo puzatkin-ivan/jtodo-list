@@ -16,7 +16,7 @@ public class CList implements IList {
     this.name = name;
   }
 
-  public String getName(String name) {
+  public String getName() {
     return this.name;
   }
 
