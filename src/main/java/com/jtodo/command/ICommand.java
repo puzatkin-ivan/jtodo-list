@@ -1,6 +1,5 @@
-package com.jtodo.command;
-import com.jtodo.command.exception.*;
+package command;
 
 public interface ICommand {
-    public void execute(String[] args) throws CommandException;
+  public void execute(String[] args);
 }
