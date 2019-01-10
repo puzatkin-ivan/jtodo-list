@@ -89,9 +89,11 @@ public class ToDoList implements IToDoList {
             res += deals.get(i).getStatus();
             res += '\n';
         }
+
         if(res.equals(name + '\n')) {
             res += EMPTY_LIST;
         }
+
         return res;
     }
 
@@ -111,6 +113,7 @@ public class ToDoList implements IToDoList {
             ToDoList list = (ToDoList) obj;
             return (list.getName().equals(this.getName())) && (list.getDeals().equals(this.getDeals()));
         }
+
         return false;
     }
 }

@@ -1,7 +1,6 @@
 package com.jtodo.toDoObjects;
 
 import com.jtodo.status.*;
-
 public class Deal implements IDeal {
     private String name;
     private IStatus status;
@@ -49,10 +48,12 @@ public class Deal implements IDeal {
 
     @Override
     public void renameTo(int num, String newName) {
+        //setName(newName);
     }
 
     @Override
     public void changeStatus(int dealNum, IStatus newStatus) {
+        //status = newStatus;
     }
 
     @Override
@@ -81,6 +82,7 @@ public class Deal implements IDeal {
             Deal deal = (Deal) obj;
             return deal.getName().equals(this.getName());
         }
+
         return false;
     }
 }
