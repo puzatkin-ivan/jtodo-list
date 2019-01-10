@@ -2,7 +2,9 @@ package com.jtodo;
 
 import com.jtodo.command.*;
 import com.jtodo.command.exception.CommandException;
+import com.jtodo.model.deal.*;
 import com.jtodo.model.storage.IStorage;
+import com.jtodo.model.list.*;
 import com.jtodo.view.IView;
 
 import java.util.*;
@@ -54,12 +56,21 @@ class CApplication implements IApplication {
 
         ICommand command = this.commands.get(args[0]);
         command.execute(args);
+
+        for(IList list : this.storage.getList())
+        {
+            System.out.println("* " + list.getName());
+            for (IDeal deal : list.getDeals())
+            {
+                System.out.println("  - " + deal.getName());
+            }
+        }
     }
 
     private void init() {
-        /*this.commands.put("open", new OpenCommand(this.view));
-        this.commands.put("create", new CreateCommand(this.view));
-        this.commands.put("rename", new RenameCommand(this.view));
+        /*this.commands.put("open", new OpenCommand(this.view));*/
+        this.commands.put("create", new CreateCommand(this.storage));
+        /*this.commands.put("rename", new RenameCommand(this.view));
         this.commands.put("change", new ChangeCommand(this.view));
         this.commands.put("delete", new DeleteCommand(this.view));*/
         this.commands.put("exit", new ExitCommand(this));

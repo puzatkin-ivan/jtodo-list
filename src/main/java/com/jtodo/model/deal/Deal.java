@@ -8,7 +8,7 @@ public class Deal implements IDeal {
     this.name = name;
   }
 
-  public String getName(String name) {
+  public String getName() {
     return this.name;
   }
 

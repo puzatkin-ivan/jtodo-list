@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IList {
     public void setName(String name);
-    public String getName(String name);
+    public String getName();
 
     public List<IDeal> getDeals();
     public void addDeal(IDeal task);
