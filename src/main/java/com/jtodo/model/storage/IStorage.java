@@ -7,6 +7,8 @@ public interface IStorage {
   public void setName(String name);
   public String getName(String name);
 
-  public List<IList> getList();
+  public List<IList> getLists();
   public void addList(IList list);
+  public IList getList(int index);
+  public int getSize();
 }

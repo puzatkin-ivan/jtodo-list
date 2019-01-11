@@ -2,11 +2,10 @@ package com.jtodo;
 
 import com.jtodo.command.*;
 import com.jtodo.command.exception.CommandException;
-import com.jtodo.model.deal.*;
 import com.jtodo.model.storage.IStorage;
-import com.jtodo.model.list.*;
 import com.jtodo.view.IView;
 
+import java.io.PrintStream;
 import java.util.*;
 
 class CApplication implements IApplication {
@@ -20,14 +19,21 @@ class CApplication implements IApplication {
     private ApplicationState state;
     private ApplicationWatcher watcher;
 
-    CApplication(Scanner stream, String path, IStorage storage) {
+    CApplication(Scanner stream, PrintStream printStream, String path, IStorage storage) {
         this.path = path;
         this.storage = storage;
         this.stream = stream;
         this.commands = new HashMap<String, ICommand>();
-        this.watcher = new ApplicationWatcher(System.out);
-        init();
+        this.watcher = new ApplicationWatcher(printStream);
         open();
+    }
+
+    void setCommands(Map<String, ICommand> newCommands) {
+        this.commands.putAll(newCommands);
+    }
+
+    void setCommand(String name, ICommand command) {
+        this.commands.put(name, command);
     }
 
     void doExecute() throws Exception {
@@ -56,29 +62,16 @@ class CApplication implements IApplication {
 
         ICommand command = this.commands.get(args[0]);
         command.execute(args);
-
-        for(IList list : this.storage.getList())
-        {
-            System.out.println("* " + list.getName());
-            for (IDeal deal : list.getDeals())
-            {
-                System.out.println("  - " + deal.getName());
-            }
-        }
-    }
-
-    private void init() {
-        /*this.commands.put("open", new OpenCommand(this.view));*/
-        this.commands.put("create", new CreateCommand(this.storage));
-        /*this.commands.put("rename", new RenameCommand(this.view));
-        this.commands.put("change", new ChangeCommand(this.view));
-        this.commands.put("delete", new DeleteCommand(this.view));*/
-        this.commands.put("exit", new ExitCommand(this));
     }
 
     @Override
     public void setState(ApplicationState state) {
         this.state = state;
+    }
+
+    @Override
+    public IStorage getStorage() {
+        return this.storage;
     }
 
     public void open() {
