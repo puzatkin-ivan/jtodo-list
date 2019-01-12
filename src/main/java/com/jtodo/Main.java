@@ -1,5 +1,6 @@
 package com.jtodo;
 
+import com.jtodo.command.*;
 import com.jtodo.handlers.*;
 import com.jtodo.toDoObjects.*;
 import com.jtodo.view.*;
@@ -7,6 +8,8 @@ import com.jtodo.workWithFiles.*;
 
 import java.io.File;
 import java.util.*;
+
+import static com.jtodo.command.utils.CommandUtils.*;
 
 public class Main {
 
@@ -41,11 +44,11 @@ public class Main {
             return;
         }
 
-        Scanner in = new Scanner(System.in);
-        ICommandHandler handler = new CommandHandler();
-
         ViewController viewer = new ViewController();
         viewer.addToViewer(mainList);
+
+        Scanner in = new Scanner(System.in);
+        ICommandHandler handler = new CommandHandler(initCommand(viewer));
 
         Timer timer = new Timer();
         IMainList timerMainList = mainList;
@@ -78,5 +81,16 @@ public class Main {
             System.out.println("Failed to save files, last saved version of files was saved.");
         }
         System.out.println(EXIT_MSG);
+    }
+
+    private static Map<String, ICommand> initCommand(IViewController viewer) {
+        Map<String, ICommand> commands = new HashMap<>();
+        commands.put(OPEN_COMMAND, new OpenCommand(viewer));
+        commands.put(CREATE_COMMAND, new CreateCommand(viewer));
+        commands.put(CHANGE_COMMAND, new ChangeCommand(viewer));
+        commands.put(DELETE_COMMAND, new DeleteCommand(viewer));
+        commands.put(RENAME_COMMAND, new RenameCommand(viewer));
+        commands.put(EXIT_COMMAND, new ExitCommand(viewer));
+        return commands;
     }
 }
