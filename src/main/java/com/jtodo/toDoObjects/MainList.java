@@ -53,11 +53,12 @@ public class MainList implements IMainList {
     }
 
     @Override
-    public void deleteList(int listNum) {
+    public void deleteList(int listNum) throws Exception {
         listNum--;
-        if(listNum < lists.size()) {
-            lists.remove(listNum);
+        if(listNum >= lists.size()) {
+            throw new Exception("List isn't exists.");
         }
+        lists.remove(listNum);
     }
 
     @Override

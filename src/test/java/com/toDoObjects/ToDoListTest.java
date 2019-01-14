@@ -44,7 +44,7 @@ public class ToDoListTest {
     }
 
     @Test
-    public void canDeleteDeal() {
+    public void canDeleteDeal() throws Exception {
         toDoList.deleteDeal(1);
         assertEquals(toDoList.toString(), toDoList.getName() + "\nList is empty");
         assertTrue(toDoList.getDeals().size() == 0);
@@ -67,7 +67,7 @@ public class ToDoListTest {
     }
 
     @Test
-    public void cantDeleteList() {
+    public void cantDeleteList() throws Exception {
         toDoList.deleteList(2);
         assertEquals("You can't delete list here" + LINE_SEPARATOR, outContent.toString());
     }

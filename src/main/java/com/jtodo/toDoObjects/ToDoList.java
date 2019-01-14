@@ -39,11 +39,12 @@ public class ToDoList implements IToDoList {
     }
 
     @Override
-    public void deleteDeal(int dealNum) {
+    public void deleteDeal(int dealNum) throws Exception {
         dealNum--;
-        if(dealNum < deals.size()) {
-            deals.remove(dealNum);
+        if(dealNum >= deals.size()) {
+            throw new Exception("Deal isn't exits");
         }
+        deals.remove(dealNum);
     }
 
     @Override

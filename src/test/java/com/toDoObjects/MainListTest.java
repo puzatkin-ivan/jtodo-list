@@ -61,7 +61,7 @@ public class MainListTest {
     }
 
     @Test
-    public void canDeleteList() {
+    public void canDeleteList() throws Exception {
         mainList.createList("List");
         mainList.deleteList(1);
     }
