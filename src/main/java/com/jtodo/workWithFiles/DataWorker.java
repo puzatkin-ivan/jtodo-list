@@ -2,6 +2,7 @@ package com.jtodo.workWithFiles;
 
 import com.jtodo.status.*;
 import com.jtodo.toDoObjects.*;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataWorker implements IDataWorker {
-    final String inProgress = " In process";
-    final String completed = " Completed";
+    private final String inProgress = "In process";
+    private final String completed = "Completed";
 
     public IStatus defineStatus(String statusStr) {
         IStatus status = null;
@@ -32,8 +33,12 @@ public class DataWorker implements IDataWorker {
     public IMainList convertDataFromFiles(File dir) throws Exception {
         IMainList list = new MainList();
 
-        for (File file : dir.listFiles()) {
-            String listName = file.getName().split("\\.")[0];
+        File[] files = dir.listFiles();
+        assert files != null;
+
+        for (File file : files) {
+            String fileName = file.getName();
+            String listName = fileName.split("\\.")[0];
             IToDoList newList = new ToDoList(listName);
 
             FileReader fr = new FileReader(file);
@@ -42,10 +47,13 @@ public class DataWorker implements IDataWorker {
             String line;
             line = reader.readLine();
             while (line != null) {
-                String[] lineArr = line.split(":");
+                JSONObject json = new JSONObject(line);
+                String name = json.getString("name");
+                String status = json.getString("status");
+
                 IStatus dealStatus;
-                dealStatus = defineStatus(lineArr[1]);
-                IDeal newDeal = new Deal(lineArr[0], dealStatus);
+                dealStatus = defineStatus(status);
+                IDeal newDeal = new Deal(name, dealStatus);
                 newList.addDeal(newDeal);
 
                 line = reader.readLine();
@@ -69,24 +77,27 @@ public class DataWorker implements IDataWorker {
 
             File newFile = new File(pathStr);
             if(!newFile.exists()) {
-                newFile.createNewFile();
-                newFile.setExecutable(true);
+                if (!newFile.createNewFile() || !newFile.setExecutable(true))
+                {
+                    throw new Exception("Creation file failed");
+                }
             }
             FileWriter writer = new FileWriter(pathStr);
 
             List<IDeal> deals = list.getDeals();
             for (IDeal deal : deals) {
-                String str = deal.toString();
-                writer.write(str);
+                JSONObject json = new JSONObject();
+                json.put("name", deal.getName());
+                json.put("status", deal.getStatus());
+                writer.write(json.toString());
                 writer.append('\n');
-
             }
             writer.flush();
             writer.close();
         }
     }
 
-    List<String> getFileNamesFromList(List<IToDoList> lists) {
+    private List<String> getFileNamesFromList(List<IToDoList> lists) {
         List<String> fileNames = new ArrayList<>();
         for (IToDoList list : lists) {
             fileNames.add(list.getName());
@@ -107,7 +118,7 @@ public class DataWorker implements IDataWorker {
                 if (!mainFileNames.contains(fileName)) {
                     fileName = dir.toString() + "\\" + fileName + ".txt";
                     File file = new File(fileName);
-                    file.delete();
+                    if (file.delete()) { throw new Exception("Deletion failed."); }
                 }
             }
         }

@@ -44,12 +44,12 @@ public class CommandUtils {
     public static final String NUMBER_PARSE_ERROR_MSG = "Error! Using non-number value ";
 
     public static String findCommandArgs(String[] arr, int start, int end) {
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = start; i < end; i++) {
-            res += arr[i];
-            res += " ";
+            if (res.length() > 0) { res.append(" "); }
+            res.append(arr[i]);
         }
-        return res;
+        return res.toString();
     }
 
     public static IStatus defineStatus(String statusStr) {
