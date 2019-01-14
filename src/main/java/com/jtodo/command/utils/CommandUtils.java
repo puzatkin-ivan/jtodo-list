@@ -1,8 +1,13 @@
 package com.jtodo.command.utils;
 
+import com.jtodo.command.*;
 import com.jtodo.status.Completed;
 import com.jtodo.status.IStatus;
 import com.jtodo.status.InProcess;
+import com.jtodo.view.IViewController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommandUtils {
     public static final int MIN_COMMAND_SIZE = 1;
@@ -59,5 +64,16 @@ public class CommandUtils {
         }
 
         return status;
+    }
+
+    public static Map<String, ICommand> getCommands(IViewController viewer) {
+        Map<String, ICommand> commands = new HashMap<>();
+        commands.put(OPEN_COMMAND, new OpenCommand(viewer));
+        commands.put(CREATE_COMMAND, new CreateCommand(viewer));
+        commands.put(CHANGE_COMMAND, new ChangeCommand(viewer));
+        commands.put(DELETE_COMMAND, new DeleteCommand(viewer));
+        commands.put(RENAME_COMMAND, new RenameCommand(viewer));
+        commands.put(EXIT_COMMAND, new ExitCommand(viewer));
+        return commands;
     }
 }

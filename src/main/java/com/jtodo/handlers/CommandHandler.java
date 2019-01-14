@@ -23,8 +23,7 @@ public class CommandHandler implements ICommandHandler {
                 throw new Exception(UNKNOWN_COMMAND_ERROR_MSG);
             }
 
-            if (!this.commands.containsKey(commandArr[0]))
-            {
+            if (!this.commands.containsKey(commandArr[0])) {
                 throw new Exception(UNKNOWN_COMMAND_ERROR_MSG);
             }
             ICommand command = this.commands.get(commandArr[0]);

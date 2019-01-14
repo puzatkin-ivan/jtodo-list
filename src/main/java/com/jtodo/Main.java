@@ -84,13 +84,6 @@ public class Main {
     }
 
     private static Map<String, ICommand> initCommand(IViewController viewer) {
-        Map<String, ICommand> commands = new HashMap<>();
-        commands.put(OPEN_COMMAND, new OpenCommand(viewer));
-        commands.put(CREATE_COMMAND, new CreateCommand(viewer));
-        commands.put(CHANGE_COMMAND, new ChangeCommand(viewer));
-        commands.put(DELETE_COMMAND, new DeleteCommand(viewer));
-        commands.put(RENAME_COMMAND, new RenameCommand(viewer));
-        commands.put(EXIT_COMMAND, new ExitCommand(viewer));
-        return commands;
+        return getCommands(viewer);
     }
 }

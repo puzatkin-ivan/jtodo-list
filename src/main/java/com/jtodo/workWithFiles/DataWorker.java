@@ -13,7 +13,8 @@ import java.util.List;
 public class DataWorker implements IDataWorker {
     final String inProgress = " In process";
     final String completed = " Completed";
-    IStatus defineStatus(String statusStr) {
+
+    public IStatus defineStatus(String statusStr) {
         IStatus status = null;
         switch (statusStr) {
             case inProgress:
