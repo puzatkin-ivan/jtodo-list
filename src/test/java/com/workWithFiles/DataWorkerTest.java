@@ -13,9 +13,9 @@ import java.io.File;
 import static org.junit.Assert.*;
 
 public class DataWorkerTest {
-    DataWorker dataWorker;
-    IMainList mainList;
-    File dir;
+    private DataWorker dataWorker;
+    private IMainList mainList;
+    private File dir;
 
     @Before
     public void init() {
@@ -55,7 +55,8 @@ public class DataWorkerTest {
     public void cantReadFilesIfDirectoryEmpty() {
         File emptyDir = new File(dir.getPath() + "/empty");
         if (!emptyDir.exists()) {
-            emptyDir.mkdir();
+            boolean mkdir = emptyDir.mkdir();
+            assert mkdir;
         }
         try {
            IMainList testList = dataWorker.convertDataFromFiles(emptyDir);

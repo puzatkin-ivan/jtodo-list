@@ -19,12 +19,15 @@ public class CreateCommand implements ICommand {
         }
 
         String commandArgs = CommandUtils.findCommandArgs(commandArr, 2, commandArr.length);
-        if (commandArr[1].equals(LIST)) {
-            viewer.getLast().createList(commandArgs);
-        } else if (commandArr[1].equals(DEAL)) {
-            viewer.getLast().createDeal(commandArgs);
-        } else {
-            throw new Exception(INVALID_COMMAND_ERROR_MSG + CREATE_USAGE_EXAMPLE);
+        switch (commandArr[1]) {
+            case LIST:
+                viewer.getLast().createList(commandArgs);
+                break;
+            case DEAL:
+                viewer.getLast().createDeal(commandArgs);
+                break;
+            default:
+                throw new Exception(INVALID_COMMAND_ERROR_MSG + CREATE_USAGE_EXAMPLE);
         }
     }
 }

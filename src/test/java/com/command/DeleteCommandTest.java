@@ -9,9 +9,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DeleteCommandTest {
-    private MainList mainList = new MainList();
-    private IViewController viewController = new ViewController();
-    private ICommand command = new DeleteCommand(viewController);
+    private final MainList mainList = new MainList();
+    private final IViewController viewController = new ViewController();
+    private final ICommand command = new DeleteCommand(viewController);
 
     @Test(expected = Exception.class)
     public void failsDeleteNotExistsList() throws Exception {

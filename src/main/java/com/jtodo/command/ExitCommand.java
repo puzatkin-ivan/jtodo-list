@@ -10,7 +10,7 @@ public class ExitCommand implements ICommand {
     }
 
     @Override
-    public void execute(String[] args) throws Exception {
+    public void execute(String[] args) {
         viewer.deleteLastView();
     }
 }

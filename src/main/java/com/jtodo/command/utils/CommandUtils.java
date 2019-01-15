@@ -16,18 +16,18 @@ public class CommandUtils {
     public static final int CHANGE_COMMAND_SIZE = 4;
     public static final int OPEN_COMMAND_SIZE = 2;
 
-    public static final String CREATE_COMMAND = "create";
-    public static final String OPEN_COMMAND = "open";
-    public static final String DELETE_COMMAND = "delete";
-    public static final String RENAME_COMMAND = "rename";
-    public static final String CHANGE_COMMAND = "change";
-    public static final String EXIT_COMMAND = "exit";
+    private static final String CREATE_COMMAND = "create";
+    private static final String OPEN_COMMAND = "open";
+    private static final String DELETE_COMMAND = "delete";
+    private static final String RENAME_COMMAND = "rename";
+    private static final String CHANGE_COMMAND = "change";
+    private static final String EXIT_COMMAND = "exit";
 
     public static final String LIST = "list";
     public static final String DEAL = "deal";
     public static final String STATUS = "status";
-    public static final String STATUS_IN_PROCESS = "process";
-    public static final String STATUS_COMPLETED = "completed";
+    private static final String STATUS_IN_PROCESS = "process";
+    private static final String STATUS_COMPLETED = "completed";
 
     public static final String ARGS_COUNT_ERROR_MSG = "Invalid args count.\n";
     public static final String INVALID_COMMAND_ERROR_MSG = "Invalid command.\n";

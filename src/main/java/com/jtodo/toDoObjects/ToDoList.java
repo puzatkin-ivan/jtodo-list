@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoList implements IToDoList {
-    final String EMPTY_LIST = "Sorry, but your todo list is empty.\nDon't worry, because you can create deals right now!";
+    private static final String EMPTY_LIST = "Sorry, but your todo list is empty.\nDon't worry, because you can create deals right now!";
     private String name;
-    private List<IDeal> deals = new ArrayList<>();
+    private final List<IDeal> deals = new ArrayList<>();
 
     public ToDoList() {
         name = "Undefined";
@@ -81,22 +81,22 @@ public class ToDoList implements IToDoList {
 
     @Override
     public String toString() {
-        String res = name;
-        res += '\n' ;
+        StringBuilder res = new StringBuilder(name);
+        res.append('\n');
         for (int i = 0; i < deals.size(); i++) {
-            res += (i + 1);
-            res += ". ";
-            res += deals.get(i).getName();
-            res += ": ";
-            res += deals.get(i).getStatus();
-            res += '\n' ;
+            res.append(i + 1);
+            res.append(". ");
+            res.append(deals.get(i).getName());
+            res.append(": ");
+            res.append(deals.get(i).getStatus());
+            res.append('\n');
         }
 
-        if (res.equals(name + '\n')) {
-            res += EMPTY_LIST;
+        if (res.toString().equals(name + '\n')) {
+            res.append(EMPTY_LIST);
         }
 
-        return res;
+        return res.toString();
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.jtodo.status.InProcess;
 
 public class Deal implements IDeal {
     private String name;
-    private IStatus status;
+    private final IStatus status;
 
     public Deal() {
         name = "Undefined";

@@ -5,32 +5,32 @@ import com.jtodo.toDoObjects.IToDoObject;
 import java.util.Stack;
 
 public class ViewController implements IViewController {
-    private Stack<IToDoObject> objs = new Stack<>();
+    private final Stack<IToDoObject> obj = new Stack<>();
 
     @Override
     public void addToViewer(IToDoObject newObj) {
-        objs.add(newObj);
+        obj.add(newObj);
     }
 
     @Override
     public void deleteLastView() {
-        objs.pop();
+        obj.pop();
     }
 
     @Override
     public IToDoObject getLast() {
-        return objs.peek();
+        return obj.peek();
     }
 
     @Override
     public void display() {
-        if (objs.size() > 0) {
-            System.out.println(objs.peek());
+        if (obj.size() > 0) {
+            System.out.println(obj.peek());
         }
     }
 
     @Override
     public boolean empty() {
-        return objs.empty();
+        return obj.empty();
     }
 }

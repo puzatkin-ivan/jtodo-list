@@ -7,8 +7,8 @@ import com.jtodo.view.ViewController;
 import org.junit.Test;
 
 public class CreateCommandTest {
-    private IToDoObject mainList = new MainList();
-    private IViewController viewController = new ViewController();
+    private final IToDoObject mainList = new MainList();
+    private final IViewController viewController = new ViewController();
 
     @Test(expected = Exception.class)
     public void failsWithInsufficientArguments() throws Exception {

@@ -12,9 +12,9 @@ import java.io.PrintStream;
 import static org.junit.Assert.*;
 
 public class ToDoListTest {
-    IToDoList toDoList;
-    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    final String LINE_SEPARATOR = System.getProperty("line.separator");
+    private IToDoList toDoList;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     @Before
     public void init() {
@@ -34,20 +34,20 @@ public class ToDoListTest {
     public void canCreateUndefinedToDoList() {
         ToDoList toDoList = new ToDoList();
         assertEquals(toDoList.getName(), "Undefined");
-        assertTrue(toDoList.getDeals().size() == 0);
+        assertEquals(0, toDoList.getDeals().size());
     }
 
     @Test
     public void canCreateDeal() throws Exception {
         toDoList.createDeal("New deal");
-        assertTrue(toDoList.getDeals().size() == 2);
+        assertEquals(2, toDoList.getDeals().size());
     }
 
     @Test
     public void canDeleteDeal() throws Exception {
         toDoList.deleteDeal(1);
         assertEquals(toDoList.toString(), toDoList.getName() + "\nList is empty");
-        assertTrue(toDoList.getDeals().size() == 0);
+        assertEquals(0, toDoList.getDeals().size());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ToDoListTest {
 
     @Test
     public void cantCreateList() throws Exception {
-        toDoList.createList("Listname");
+        toDoList.createList("Lestrade");
         assertEquals("You can't create list here" + LINE_SEPARATOR, outContent.toString());
     }
 

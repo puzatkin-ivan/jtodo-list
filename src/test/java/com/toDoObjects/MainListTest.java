@@ -14,9 +14,9 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class MainListTest {
-    MainList mainList;
-    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    final String LINE_SEPARATOR = System.getProperty("line.separator");
+    private MainList mainList;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     @Before
     public void init() {
@@ -33,6 +33,7 @@ public class MainListTest {
     public void canConstructedFromOtherList() {
         List<IToDoList> testList = new ArrayList<>();
         MainList list = new MainList(testList);
+        assertEquals(list.getLists(), testList);
     }
 
     @Test
@@ -57,7 +58,7 @@ public class MainListTest {
 
     @Test
     public void cantOpenNonexistentList() {
-        assertEquals(mainList.openList(1), null);
+        assertNull(mainList.openList(1));
     }
 
     @Test

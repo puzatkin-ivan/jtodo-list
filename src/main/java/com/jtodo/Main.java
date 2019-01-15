@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 import static com.jtodo.command.utils.CommandUtils.getCommands;
 
-public class Main {
+class Main {
 
     private static IMainList loadFiles(IDataWorker worker, File dir) {
         IMainList list = null;
@@ -57,7 +57,8 @@ public class Main {
         ICommandHandler handler = new CommandHandler(initCommand(viewer));
 
         Timer timer = new Timer();
-        IMainList timerMainList =  mainList;
+        IMainList timerMainList;
+        timerMainList = mainList;
         TimerTask autoSave = new TimerTask() {
             public void run() {
                 try {
