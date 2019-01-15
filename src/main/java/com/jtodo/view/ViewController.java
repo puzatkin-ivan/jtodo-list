@@ -1,10 +1,11 @@
 package com.jtodo.view;
 
-import com.jtodo.toDoObjects.*;
+import com.jtodo.toDoObjects.IToDoObject;
+
 import java.util.Stack;
 
 public class ViewController implements IViewController {
-    Stack<IToDoObject> objs = new Stack<>();
+    private Stack<IToDoObject> objs = new Stack<>();
 
     @Override
     public void addToViewer(IToDoObject newObj) {
@@ -23,7 +24,7 @@ public class ViewController implements IViewController {
 
     @Override
     public void display() {
-        if(objs.size() > 0) {
+        if (objs.size() > 0) {
             System.out.println(objs.peek());
         }
     }

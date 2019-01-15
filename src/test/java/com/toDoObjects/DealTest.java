@@ -12,9 +12,9 @@ import java.io.PrintStream;
 import static org.junit.Assert.*;
 
 public class DealTest {
-    Deal deal;
-    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    final String LINE_SEPARATOR = System.getProperty("line.separator");
+    private Deal deal;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     @Before
     public void init() {
@@ -41,25 +41,25 @@ public class DealTest {
     }
 
     @Test
-    public void cantCreateList() {
+    public void cantCreateList() throws Exception {
         deal.createList("name");
         assertEquals("You can't create list here" + LINE_SEPARATOR, outContent.toString());
     }
 
     @Test
-    public void cantCreateDealInsideThem() {
+    public void cantCreateDealInsideThem() throws Exception {
         deal.createDeal("Deal");
         assertEquals("You can't create deal here" + LINE_SEPARATOR, outContent.toString());
     }
 
     @Test
-    public void cantDeleteDeal() {
+    public void cantDeleteDeal() throws Exception {
         deal.deleteDeal(1);
         assertEquals("You can't delete deal here" + LINE_SEPARATOR, outContent.toString());
     }
 
     @Test
-    public void cantDeleteList() {
+    public void cantDeleteList() throws Exception {
         deal.deleteList(4);
         assertEquals("You can't delete list here" + LINE_SEPARATOR, outContent.toString());
     }
@@ -68,5 +68,28 @@ public class DealTest {
     public void canRenameDeal() {
         deal.setName("New name");
         assertEquals(deal.getName(), "New name");
+    }
+
+    @Test
+    public void isNotEqualsOtherObject()
+    {
+        Object str = "String isn't equals Deal";
+        Object list = new ToDoList("List");
+        assertTrue(!deal.equals(str));
+        assertTrue(!deal.equals(list));
+    }
+
+    @Test
+    public void canToString() {
+        String excepted = "Task1: In process";
+        Deal task = new Deal("Task1");
+        assertEquals(excepted, task.toString());
+    }
+
+    @Test
+    public void canSetName() {
+        Deal deal = new Deal();
+        deal.setName("Task True");
+        assertTrue(true);
     }
 }

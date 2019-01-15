@@ -38,7 +38,7 @@ public class ToDoListTest {
     }
 
     @Test
-    public void canCreateDeal() {
+    public void canCreateDeal() throws Exception {
         toDoList.createDeal("New deal");
         assertTrue(toDoList.getDeals().size() == 2);
     }
@@ -61,7 +61,7 @@ public class ToDoListTest {
     }
 
     @Test
-    public void cantCreateList() {
+    public void cantCreateList() throws Exception {
         toDoList.createList("Listname");
         assertEquals("You can't create list here" + LINE_SEPARATOR, outContent.toString());
     }

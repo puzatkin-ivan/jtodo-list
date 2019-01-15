@@ -1,6 +1,7 @@
 package com.jtodo.toDoObjects;
 
-import com.jtodo.status.*;
+import com.jtodo.status.IStatus;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +25,8 @@ public class ToDoList implements IToDoList {
     }
 
     @Override
-    public void createList(String listName) {
-        System.out.println("Sorry, but you can't create list here.");
+    public void createList(String listName) throws Exception {
+        throw new Exception("Sorry, but you can't create list here.");
     }
 
     @Override
@@ -34,14 +35,14 @@ public class ToDoList implements IToDoList {
     }
 
     @Override
-    public void deleteList(int listNum) {
-        System.out.println("Sorry, but you can't delete list here.");
+    public void deleteList(int listNum) throws Exception {
+        throw new Exception("Sorry, but you can't delete list here.");
     }
 
     @Override
     public void deleteDeal(int dealNum) throws Exception {
         dealNum--;
-        if(dealNum >= deals.size()) {
+        if (dealNum >= deals.size()) {
             throw new Exception("Deal isn't exits");
         }
         deals.remove(dealNum);
@@ -64,13 +65,13 @@ public class ToDoList implements IToDoList {
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public String getName() {
-        return name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -81,17 +82,17 @@ public class ToDoList implements IToDoList {
     @Override
     public String toString() {
         String res = name;
-        res += '\n';
-        for(int i = 0; i < deals.size(); i++) {
+        res += '\n' ;
+        for (int i = 0; i < deals.size(); i++) {
             res += (i + 1);
             res += ". ";
             res += deals.get(i).getName();
             res += ": ";
             res += deals.get(i).getStatus();
-            res += '\n';
+            res += '\n' ;
         }
 
-        if(res.equals(name + '\n')) {
+        if (res.equals(name + '\n')) {
             res += EMPTY_LIST;
         }
 
@@ -110,7 +111,7 @@ public class ToDoList implements IToDoList {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof ToDoList) {
+        if (obj instanceof ToDoList) {
             ToDoList list = (ToDoList) obj;
             return (list.getName().equals(this.getName())) && (list.getDeals().equals(this.getDeals()));
         }

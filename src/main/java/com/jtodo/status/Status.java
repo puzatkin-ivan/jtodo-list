@@ -1,7 +1,7 @@
 package com.jtodo.status;
 
 public class Status implements IStatus {
-    private String name = "undefined";
+    private String name;
 
     public Status(String statusName) {
         name = statusName;

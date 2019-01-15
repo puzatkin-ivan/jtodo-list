@@ -1,6 +1,8 @@
 package com.jtodo.toDoObjects;
 
-import com.jtodo.status.*;
+import com.jtodo.status.IStatus;
+import com.jtodo.status.InProcess;
+
 public class Deal implements IDeal {
     private String name;
     private IStatus status;
@@ -27,23 +29,23 @@ public class Deal implements IDeal {
     }
 
     @Override
-    public void createList(String listName) {
-        System.out.println("Sorry, but you can't create list here.");
+    public void createList(String listName) throws Exception {
+        throw new Exception("Sorry, but you can't create list here.");
     }
 
     @Override
-    public void createDeal(String dealName) {
-        System.out.println("Sorry, but you can't create deal here.");
+    public void createDeal(String dealName) throws Exception {
+        throw new Exception("Sorry, but you can't create deal here.");
     }
 
     @Override
-    public void deleteList(int listNum) {
-        System.out.println("Sorry, but you can't delete list here.");
+    public void deleteList(int listNum) throws Exception {
+        throw new Exception("Sorry, but you can't delete list here.");
     }
 
     @Override
-    public void deleteDeal(int dealNum) {
-        System.out.println("Sorry, but you can't delete deal here.");
+    public void deleteDeal(int dealNum) throws Exception {
+        throw new Exception("Sorry, but you can't delete deal here.");
     }
 
     @Override
@@ -57,13 +59,13 @@ public class Deal implements IDeal {
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public String getName() {
-        return name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -78,7 +80,7 @@ public class Deal implements IDeal {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Deal) {
+        if (obj instanceof IDeal) {
             Deal deal = (Deal) obj;
             return deal.getName().equals(this.getName());
         }

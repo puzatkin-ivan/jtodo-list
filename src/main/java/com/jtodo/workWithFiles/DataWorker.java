@@ -12,16 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataWorker implements IDataWorker {
-    private final String inProgress = "In process";
-    private final String completed = "Completed";
+    private static final String IN_PROCESS = "In process";
+    private static final String COMPLETED = "Completed";
 
     public IStatus defineStatus(String statusStr) {
         IStatus status = null;
         switch (statusStr) {
-            case inProgress:
+            case IN_PROCESS:
                 status = new InProcess();
                 break;
-            case completed:
+            case COMPLETED:
                 status = new Completed();
                 break;
         }

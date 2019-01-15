@@ -1,26 +1,24 @@
 package com.handlers;
 
-import com.jtodo.command.*;
-import com.jtodo.handlers.*;
-import com.jtodo.toDoObjects.*;
-import com.jtodo.view.*;
+import com.jtodo.handlers.CommandHandler;
+import com.jtodo.handlers.ICommandHandler;
+import com.jtodo.toDoObjects.IMainList;
+import com.jtodo.toDoObjects.MainList;
+import com.jtodo.view.IViewController;
+import com.jtodo.view.ViewController;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.jtodo.command.utils.CommandUtils.*;
-import static org.junit.Assert.*;
+import static com.jtodo.command.utils.CommandUtils.getCommands;
+import static org.junit.Assert.assertTrue;
 
 public class CommandHandlerTest {
-    ICommandHandler commandHandler;
-    IViewController viewController;
-    IMainList mainList;
+    private ICommandHandler commandHandler;
+    private IViewController viewController;
 
     @Before
     public void init() {
-        mainList = new MainList();
+        IMainList mainList = new MainList();
         viewController = new ViewController();
         commandHandler = new CommandHandler(getCommands(viewController));
         viewController.addToViewer(mainList);

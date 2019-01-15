@@ -1,23 +1,29 @@
 package com.jtodo;
 
-import com.jtodo.command.*;
-import com.jtodo.handlers.*;
-import com.jtodo.toDoObjects.*;
-import com.jtodo.view.*;
-import com.jtodo.workWithFiles.*;
+import com.jtodo.command.ICommand;
+import com.jtodo.handlers.CommandHandler;
+import com.jtodo.handlers.ICommandHandler;
+import com.jtodo.toDoObjects.IMainList;
+import com.jtodo.view.IViewController;
+import com.jtodo.view.ViewController;
+import com.jtodo.workWithFiles.DataWorker;
+import com.jtodo.workWithFiles.IDataWorker;
 
 import java.io.File;
-import java.util.*;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import static com.jtodo.command.utils.CommandUtils.*;
+import static com.jtodo.command.utils.CommandUtils.getCommands;
 
 public class Main {
 
-    static IMainList loadFiles(IDataWorker worker, File dir) {
+    private static IMainList loadFiles(IDataWorker worker, File dir) {
         IMainList list = null;
         try {
             list = worker.convertDataFromFiles(dir);
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
 
         return list;
@@ -51,7 +57,7 @@ public class Main {
         ICommandHandler handler = new CommandHandler(initCommand(viewer));
 
         Timer timer = new Timer();
-        IMainList timerMainList = mainList;
+        IMainList timerMainList =  mainList;
         TimerTask autoSave = new TimerTask() {
             public void run() {
                 try {

@@ -47,7 +47,7 @@ public class DataWorkerTest {
             File outFile = new File(dir + "/" + mainList.getLists().get(0).getName() +".txt");
             assertTrue(outFile.exists());
             outFile.deleteOnExit();
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -60,7 +60,7 @@ public class DataWorkerTest {
         try {
            IMainList testList = dataWorker.convertDataFromFiles(emptyDir);
            assertEquals(testList, mainList);
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
 
         }
         emptyDir.deleteOnExit();

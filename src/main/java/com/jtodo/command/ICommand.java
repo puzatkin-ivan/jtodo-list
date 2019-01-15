@@ -1,5 +1,5 @@
 package com.jtodo.command;
 
 public interface ICommand {
-  public void execute(String[] args) throws Exception;
+    void execute(String[] args) throws Exception;
 }

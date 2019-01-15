@@ -67,13 +67,13 @@ public class MainListTest {
     }
 
     @Test
-    public void cantCreateDeal() {
+    public void cantCreateDeal() throws Exception {
         mainList.createDeal("deal");
         assertEquals("You can't create deal here" + LINE_SEPARATOR, outContent.toString());
     }
 
     @Test
-    public void cantDeleteDeal() {
+    public void cantDeleteDeal() throws Exception {
         mainList.deleteDeal(1);
         assertEquals("You can't delete deal here" + LINE_SEPARATOR, outContent.toString());
     }

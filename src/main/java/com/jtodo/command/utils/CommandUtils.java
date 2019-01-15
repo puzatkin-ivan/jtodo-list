@@ -46,7 +46,9 @@ public class CommandUtils {
     public static String findCommandArgs(String[] arr, int start, int end) {
         StringBuilder res = new StringBuilder();
         for (int i = start; i < end; i++) {
-            if (res.length() > 0) { res.append(" "); }
+            if (res.length() > 0) {
+                res.append(" ");
+            }
             res.append(arr[i]);
         }
         return res.toString();

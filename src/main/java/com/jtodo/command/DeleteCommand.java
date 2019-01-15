@@ -13,12 +13,15 @@ public class DeleteCommand implements ICommand {
 
     @Override
     public void execute(String[] args) throws Exception {
-        if (args[1].equals(LIST)) {
-            viewer.getLast().deleteList(Integer.parseInt(args[2]));
-        } else if (args[1].equals(DEAL)) {
-            viewer.getLast().deleteDeal(Integer.parseInt(args[2]));
-        } else {
-            throw new Exception(INVALID_COMMAND_ERROR_MSG + DELETE_USAGE_EXAMPLE);
+        switch (args[1]) {
+            case LIST:
+                viewer.getLast().deleteList(Integer.parseInt(args[2]));
+                break;
+            case DEAL:
+                viewer.getLast().deleteDeal(Integer.parseInt(args[2]));
+                break;
+            default:
+                throw new Exception(INVALID_COMMAND_ERROR_MSG + DELETE_USAGE_EXAMPLE);
         }
     }
 }
