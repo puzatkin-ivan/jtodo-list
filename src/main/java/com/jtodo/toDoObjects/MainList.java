@@ -78,8 +78,8 @@ public class MainList implements IMainList {
     }
 
     @Override
-    public void changeStatus(int dealNum, IStatus newStatus) {
-        System.out.println("Sorry, but you can't change status here.");
+    public void changeStatus(int dealNum, IStatus newStatus) throws Exception {
+        throw new Exception("Sorry, but you can't change status here.");
     }
 
     @Override

@@ -11,4 +11,13 @@ public class Status implements IStatus {
     public String toString() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof IStatus) {
+            IStatus rhs = (IStatus)object;
+            return toString().equals(rhs.toString());
+        }
+        return false;
+    }
 }

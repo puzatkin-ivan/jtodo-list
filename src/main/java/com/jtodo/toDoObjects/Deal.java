@@ -5,7 +5,7 @@ import com.jtodo.status.InProcess;
 
 public class Deal implements IDeal {
     private String name;
-    private final IStatus status;
+    private IStatus status;
 
     public Deal() {
         name = "Undefined";
@@ -71,6 +71,10 @@ public class Deal implements IDeal {
     @Override
     public IStatus getStatus() {
         return status;
+    }
+
+    public void setStatus(IStatus st) {
+        status = st;
     }
 
     @Override

@@ -44,6 +44,19 @@ public class DeleteCommandTest {
         command.execute(data);
     }
 
+    @Test
+    public void successDeleteExists() throws Exception {
+        viewController.addToViewer(mainList);
+        mainList.addList(new ToDoList("Task1"));
+        mainList.addList(new ToDoList("Task2"));
+
+        String[] data = { "delete", "list", "2" };
+        int sizeBefore = mainList.getLists().size();
+        command.execute(data);
+        int sizeAfter = mainList.getLists().size();
+        assertNotEquals(sizeBefore, sizeAfter);
+    }
+
     @Test(expected = Exception.class)
     public void failsDeleteExistsDeal() throws Exception {
         ToDoList list = new ToDoList();

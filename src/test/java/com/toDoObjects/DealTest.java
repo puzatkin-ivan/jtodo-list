@@ -88,8 +88,17 @@ public class DealTest {
 
     @Test
     public void canSetName() {
+        String name = "Task True";
         Deal deal = new Deal();
-        deal.setName("Task True");
-        assertTrue(true);
+        deal.setName(name);
+        assertEquals(deal.getName(), name);
+    }
+
+    @Test
+    public void changeStatus() {
+        Deal deal = new Deal();
+        assertNotEquals(deal.getStatus(), new Completed());
+        deal.setStatus(new Completed());
+        assertEquals(deal.getStatus(), new Completed());
     }
 }

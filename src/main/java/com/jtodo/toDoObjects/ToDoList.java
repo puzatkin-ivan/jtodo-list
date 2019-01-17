@@ -57,11 +57,13 @@ public class ToDoList implements IToDoList {
     }
 
     @Override
-    public void changeStatus(int dealNum, IStatus newStatus) {
-        dealNum--;
-        IDeal changedDeal = new Deal(deals.get(dealNum).getName(), newStatus);
-        deals.remove(dealNum);
-        deals.add(dealNum, changedDeal);
+    public void changeStatus(int dealNum, IStatus newStatus) throws Exception {
+        if (deals.size() <= --dealNum) {
+            throw new Exception("Deal isn't exists.");
+        }
+
+        IDeal changedDeal = deals.get(dealNum);
+        changedDeal.setStatus(newStatus);
     }
 
     @Override

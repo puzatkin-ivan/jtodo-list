@@ -15,7 +15,7 @@ public interface IToDoObject {
 
     void renameTo(int num, String newName);
 
-    void changeStatus(int dealNum, IStatus newStatus);
+    void changeStatus(int dealNum, IStatus newStatus) throws Exception;
 
     String getName();
 

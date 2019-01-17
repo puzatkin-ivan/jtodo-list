@@ -118,7 +118,7 @@ public class DataWorker implements IDataWorker {
                 if (!mainFileNames.contains(fileName)) {
                     fileName = dir.toString() + "\\" + fileName + ".txt";
                     File file = new File(fileName);
-                    if (file.delete()) { throw new Exception("Deletion failed."); }
+                    if (!file.delete()) { throw new Exception("Deletion failed."); }
                 }
             }
         }

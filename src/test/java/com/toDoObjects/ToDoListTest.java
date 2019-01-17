@@ -51,7 +51,7 @@ public class ToDoListTest {
     }
 
     @Test
-    public void canChangeStatus() {
+    public void canChangeStatus() throws Exception {
         toDoList.changeStatus(1 , new Completed());
     }
 

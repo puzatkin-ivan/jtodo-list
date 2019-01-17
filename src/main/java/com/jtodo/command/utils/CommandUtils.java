@@ -16,7 +16,7 @@ public class CommandUtils {
     public static final int CHANGE_COMMAND_SIZE = 4;
     public static final int OPEN_COMMAND_SIZE = 2;
 
-    private static final String CREATE_COMMAND = "create";
+    public static final String CREATE_COMMAND = "create";
     private static final String OPEN_COMMAND = "open";
     private static final String DELETE_COMMAND = "delete";
     private static final String RENAME_COMMAND = "rename";

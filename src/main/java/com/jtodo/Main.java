@@ -65,7 +65,7 @@ class Main {
                     dWorker.deleteDifferences(mainList, dir);
                     dWorker.convertDataToFiles(timerMainList, dir);
                 } catch (Exception e) {
-                    System.out.println("Auto save process failed.");
+                    System.out.println(e.getMessage());
                 }
             }
         };

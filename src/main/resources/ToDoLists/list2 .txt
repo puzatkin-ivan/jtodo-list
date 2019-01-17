@@ -1,2 +1,0 @@
-deal21 : Completed
-deal22 : In process

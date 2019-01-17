@@ -80,7 +80,7 @@ public class MainListTest {
     }
 
     @Test
-    public void cantChangeDealStatus() {
+    public void cantChangeDealStatus() throws Exception {
         IStatus status = new Status("Completed");
         mainList.changeStatus(1,status);
         assertEquals("You can't change status here" + LINE_SEPARATOR, outContent.toString());
