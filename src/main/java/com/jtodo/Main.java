@@ -50,7 +50,7 @@ class Main {
             return;
         }
 
-        ViewController viewer = new ViewController();
+        IViewController viewer = new ViewController();
         viewer.addToViewer(mainList);
 
         Scanner in = new Scanner(System.in);
@@ -78,7 +78,7 @@ class Main {
             viewer.display();
             System.out.print(READ_POINTER);
             String command = in.nextLine();
-            handler.handleCommand(command, viewer);
+            handler.handleCommand(command);
         }
 
         timer.cancel();

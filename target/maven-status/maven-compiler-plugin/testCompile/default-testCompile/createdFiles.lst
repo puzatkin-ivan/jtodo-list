@@ -1,0 +1,7 @@
+com\command\DeleteCommandTest.class
+com\toDoObjects\DealTest.class
+com\workWithFiles\DataWorkerTest.class
+com\command\CreateCommandTest.class
+com\toDoObjects\ToDoListTest.class
+com\handlers\CommandHandlerTest.class
+com\toDoObjects\MainListTest.class

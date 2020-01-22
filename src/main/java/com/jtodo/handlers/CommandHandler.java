@@ -1,7 +1,6 @@
 package com.jtodo.handlers;
 
 import com.jtodo.command.ICommand;
-import com.jtodo.view.IViewController;
 
 import java.util.Map;
 
@@ -15,7 +14,7 @@ public class CommandHandler implements ICommandHandler {
     }
 
     @Override
-    public boolean handleCommand(String commandLine, IViewController viewer) {
+    public boolean handleCommand(String commandLine) {
         boolean result = true;
         String[] commandArr = commandLine.split(" ");
         try {

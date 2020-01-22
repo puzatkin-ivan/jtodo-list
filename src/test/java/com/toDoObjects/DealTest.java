@@ -28,7 +28,7 @@ public class DealTest {
     }
 
     @Test
-    public void canCreateUnderfinedDeal() {
+    public void canCreateUndefinedDeal() {
         Deal undefinedDeal = new Deal();
         assertEquals(undefinedDeal.getName(), "Undefined");
         assertEquals(undefinedDeal.getStatus().toString(), new InProcess().toString());

@@ -14,12 +14,11 @@ import static org.junit.Assert.assertTrue;
 
 public class CommandHandlerTest {
     private ICommandHandler commandHandler;
-    private IViewController viewController;
 
     @Before
     public void init() {
         IMainList mainList = new MainList();
-        viewController = new ViewController();
+        IViewController viewController = new ViewController();
         commandHandler = new CommandHandler(getCommands(viewController));
         viewController.addToViewer(mainList);
 
@@ -27,56 +26,56 @@ public class CommandHandlerTest {
 
     @Test
     public void canHandCreateListCommand() {
-        assertTrue(commandHandler.handleCommand("create list Test", viewController));
+        assertTrue(commandHandler.handleCommand("create list Test"));
     }
 
     @Test
     public void canHandOpenListCommand() {
-        assertTrue(commandHandler.handleCommand("create list Test", viewController));
-        assertTrue(commandHandler.handleCommand("open 1", viewController));
+        assertTrue(commandHandler.handleCommand("create list Test"));
+        assertTrue(commandHandler.handleCommand("open 1"));
     }
 
     @Test
     public void canHandCreateDealCommand() {
-        assertTrue(commandHandler.handleCommand("create list Test", viewController));
-        assertTrue(commandHandler.handleCommand("open 1", viewController));
-        assertTrue(commandHandler.handleCommand("create deal new deal", viewController));
+        assertTrue(commandHandler.handleCommand("create list Test"));
+        assertTrue(commandHandler.handleCommand("open 1"));
+        assertTrue(commandHandler.handleCommand("create deal new deal"));
     }
 
     @Test
     public void canHandRenameCommand() {
-        assertTrue(commandHandler.handleCommand("create list Test", viewController));
-        assertTrue(commandHandler.handleCommand("rename 1 New name", viewController));
+        assertTrue(commandHandler.handleCommand("create list Test"));
+        assertTrue(commandHandler.handleCommand("rename 1 New name"));
     }
 
     @Test
     public void canHandDeleteDealCommand() {
-        assertTrue(commandHandler.handleCommand("create list Test", viewController));
-        assertTrue(commandHandler.handleCommand("open 1", viewController));
-        assertTrue(commandHandler.handleCommand("create deal new deal", viewController));
-        assertTrue(commandHandler.handleCommand("delete deal 1", viewController));
+        assertTrue(commandHandler.handleCommand("create list Test"));
+        assertTrue(commandHandler.handleCommand("open 1"));
+        assertTrue(commandHandler.handleCommand("create deal new deal"));
+        assertTrue(commandHandler.handleCommand("delete deal 1"));
     }
 
     @Test
     public void canHandDeleteListCommand() {
-        assertTrue(commandHandler.handleCommand("create list Test", viewController));
-        assertTrue(commandHandler.handleCommand("delete list 1", viewController));
+        assertTrue(commandHandler.handleCommand("create list Test"));
+        assertTrue(commandHandler.handleCommand("delete list 1"));
     }
 
     @Test
     public void canHandExitCommand() {
-        assertTrue(commandHandler.handleCommand("create list Test", viewController));
-        assertTrue(commandHandler.handleCommand("open 1", viewController));
-        assertTrue(commandHandler.handleCommand("exit", viewController));
+        assertTrue(commandHandler.handleCommand("create list Test"));
+        assertTrue(commandHandler.handleCommand("open 1"));
+        assertTrue(commandHandler.handleCommand("exit"));
     }
 
     @Test
     public void canHandChangeCommand() {
-        assertTrue(commandHandler.handleCommand("create list Test", viewController));
-        assertTrue(commandHandler.handleCommand("open 1", viewController));
-        assertTrue(commandHandler.handleCommand("create deal new deal", viewController));
-        assertTrue(commandHandler.handleCommand("change status 1 completed", viewController));
-        assertTrue(commandHandler.handleCommand("change status 1 process", viewController));
+        assertTrue(commandHandler.handleCommand("create list Test"));
+        assertTrue(commandHandler.handleCommand("open 1"));
+        assertTrue(commandHandler.handleCommand("create deal new deal"));
+        assertTrue(commandHandler.handleCommand("change status 1 completed"));
+        assertTrue(commandHandler.handleCommand("change status 1 process"));
     }
 
 }
